@@ -1,0 +1,189 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', Verdana, sans-serif;
+    background-color: #222831;
+}
+
+#startPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: hsl(243, 70%, 75%);
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 4em;
+}
+
+.heading {
+    font-size: 4em;
+    font-weight: 800;
+}
+
+#gameDiv {
+    display: none;
+    width:100vw;
+    justify-content: space-between;
+}
+
+#myBoard {
+    width: 70vh;
+}
+
+#solvedDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 4em;
+    color: #f2a365;
+}
+
+#moveColorDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #ececec;
+    font-size: 3em;
+    font-weight: 600;
+}
+
+#timer {
+    font-size: 1.5em;
+}
+
+#colorSquare {
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid grey;
+    background-color: #363236;
+}
+
+.marks {
+    width: 0.5em;
+    margin: 15px;
+}
+
+#solvedPuzzles {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#but {
+    font-size: 2.3em;
+    font-weight: 600;
+}
+
+#gameOver > .pressDownButton {
+    font-size: 0.8em;
+    font-weight: 800;
+}
+
+.pressDownButton {
+    background-color: hsl(222, 100%, 95%);
+    padding: 12px 24px;
+    color: hsl(243, 80%, 62%);
+    border-radius: 6px;
+    border-bottom: 4px solid hsl(221, 89%, 85%);
+    transition: all 0.1s ease-in-out;
+}
+
+.pressDownButton:hover {
+    border-bottom-width: 0;
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+#correct {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*395 x 512*/
+    margin-top: -256px;
+    margin-left: -197.5px;
+    z-index: 999;
+    display: none;
+}
+
+#wrong {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*395 x 512*/
+    margin-top: -256px;
+    margin-left: -197.5px;
+    z-index: 999;
+    display: none;
+}
+
+#gameOver {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #ececec;
+    font-size: 3em;
+    font-weight: 600;
+}
+
+input[type=radio]{
+    display: none;
+}
+
+.radio {
+    background-color: #363236;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 12px 24px;
+    color: #ececec;
+    font-size: 1.7em;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.1s ease-in-out;
+}
+
+input[type=radio]:checked + .radio{
+    border: 2px solid rgb(14, 158, 14);
+}
+
+.timeSelector {
+    padding: 5px;
+    margin-bottom: 4em;
+}
+
+#loadingPage {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loadingGif {
+    height: 4em;
+}
+
+.loadingText {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: white;
+}
