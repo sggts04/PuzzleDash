@@ -2,6 +2,8 @@
 
 Introducing PuzzleDash! A completely free alternative for playing Chess Puzzle Rush, a popular paid Chesscom feature where you are challenged to solve a series of chess puzzles with increasing difficulty in limited time.
 
+Once over, you can also click on any puzzle from your last PuzzleDash, and analyze it through Lichess.
+
 **It is live at: [https://shreyasgupta.in/PuzzleDash/](https://shreyasgupta.in/PuzzleDash/)**
 
 ![PuzzleDash Demo Gif](https://i.imgur.com/z75UmzX.gif)
