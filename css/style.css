@@ -199,6 +199,24 @@ input[type=radio]:checked + .radio{
     color: white;
 }
 
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #36B96E;
+    color: white;
+    text-align: center;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: rgb(199, 209, 202);
+}
+
 /* Media Tags for general text/margin/padding resizing */
 
 @media (max-width: 1220px) {
