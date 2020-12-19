@@ -123,7 +123,16 @@ function loadPuzzle(puzzles, id, userHistory, correct, wrong, puzzleEndDateTime,
     let color = 'white';
     let mvNum = 0;
     let board;
+    let $boardHighlighting = $('#myBoard');
     const game = new Chess(data.fen);
+    let squareClass = 'square-55d63'
+
+    function removeHighlights () {
+        $boardHighlighting.find('.' + squareClass)
+          .removeClass('highlight-white')
+        $boardHighlighting.find('.' + squareClass)
+          .removeClass('highlight-black')
+      }
 
     function onDragStart(source, piece, position, orientation) {
         // do not pick up pieces if the game is over
@@ -179,8 +188,16 @@ function loadPuzzle(puzzles, id, userHistory, correct, wrong, puzzleEndDateTime,
             loadPuzzle(puzzles, id + 1, userHistory, correct, wrong, puzzleEndDateTime, timerId);
             return;
         }
-        game.move(data.answer[mvNum])
-        board.position(game.fen())
+        const mv = game.move(data.answer[mvNum]);
+        board.position(game.fen());
+
+        // Piece Highlighting for Computer's Move
+        removeHighlights();
+        $boardHighlighting.find('.square-' + mv.from).addClass('highlight-' + squares[mv.from])
+        $boardHighlighting.find('.square-' + mv.to).addClass('highlight-' + squares[mv.to])
+
+        if (mv.captured) captureAudio.play();
+        else moveAudio.play();
         mvNum++;
 
     }
@@ -193,15 +210,21 @@ function loadPuzzle(puzzles, id, userHistory, correct, wrong, puzzleEndDateTime,
         orientation: data.color
     };
     board = Chessboard('myBoard', config)
-    // start puzzle
+
     if (data.color === 'white') color = 'black';
     else color = 'white';
 
+    // Play First Move
     const mv = game.move(startMove);
     board.position(game.fen())
 
     if (color === 'white') color = 'black';
     else color = 'white';
+
+    // Piece Highlighting for first move
+    removeHighlights();
+    $boardHighlighting.find('.square-' + mv.from).addClass('highlight-' + squares[mv.from]);
+    $boardHighlighting.find('.square-' + mv.to).addClass('highlight-' + squares[mv.to]);
 
     if (mv.captured) captureAudio.play()
     else moveAudio.play()

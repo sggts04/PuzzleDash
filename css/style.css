@@ -44,6 +44,14 @@ body {
     width: 70vh;
 }
 
+.highlight-white {
+    background-color: #cdd26a!important;
+}
+
+.highlight-black {
+    background-color: #aaa23a!important;
+}
+
 #solvedDiv {
     display: flex;
     flex-direction: column;
