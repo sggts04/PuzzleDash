@@ -10,6 +10,8 @@ Once over, you can also click on any puzzle from your last PuzzleDash, and analy
 
 [Demonstration Video](https://www.youtube.com/watch?v=hKUGLylu1pY)
 
+### [Changelog](https://github.com/sggts04/PuzzleDash/blob/master/CHANGELOG.md)
+
 ### Frontend Tech Stack/Libraries Used
 
 * HTML/CSS/JS

@@ -206,12 +206,13 @@ footer {
     width: 100%;
     background-color: #36B96E;
     color: white;
-    text-align: center;
     font-weight: 600;
+    text-align: center;
 }
 
 footer a {
     color: white;
+    margin: 0 10px;
 }
 
 footer a:hover {
