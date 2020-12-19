@@ -9,12 +9,12 @@ const lowTimeAudio = new Audio('sounds/LowTime.mp3');
 
 function start() {
     let selectedTime = Number($('input[name="timeSelect"]:checked').val());
-    $('#startPage').remove();
+    $('#startPage').hide();
     $('#loadingPage').css("display", "flex");
     $.ajax({
         url: `https://puzzle-dash.herokuapp.com/puzzles/80`,
         complete(resp) {
-            $('#loadingPage').remove();
+            $('#loadingPage').hide();
             $('#gameDiv').css("display", "flex");
             const puzzles = resp.responseJSON;
             startAudio.play();
@@ -82,8 +82,8 @@ function gameOver(correct, timerId) {
     console.log("Game Over!");
     gameOverAudio.play();
     clearInterval(timerId);
-    $('#gameBoardDiv').remove();
-    $('#moveColorDiv').remove();
+    $('#gameBoardDiv').hide();
+    $('#moveColorDiv').hide();
     $('#gameOver').css("display", "flex");
     let text = '';
     if (correct < 5) text = 'Bad Luck!';
@@ -98,8 +98,8 @@ function gameFinish(timerId) {
     console.log("Game Finish!");
     gameFinishAudio.play();
     clearInterval(timerId);
-    $('#gameBoardDiv').remove();
-    $('#moveColorDiv').remove();
+    $('#gameBoardDiv').hide();
+    $('#moveColorDiv').hide();
     $('#gameOver').css("display", "flex");
     let text = 'Outstanding!';
     $('#scoreText').text(text);
