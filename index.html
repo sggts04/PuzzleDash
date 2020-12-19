@@ -10,6 +10,12 @@
 	<meta name="robots" content="index, follow">
 	<meta name="revisit-after" content="2 days">
     <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <script>
+        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+        let vh = window.innerHeight * 0.01;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    </script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet"
       href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
