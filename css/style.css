@@ -211,6 +211,10 @@ input[type=radio]:checked + .radio{
         width: 0.45em;
         margin: 0px 12px;
     }
+    
+    #gameOver {
+        font-size: 2.3em;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -226,6 +230,10 @@ input[type=radio]:checked + .radio{
         width: 0.35em;
         margin: 0px 10px;
     }
+
+    #gameOver {
+        font-size: 1.8em;
+    }
 }
 
 @media (max-width: 750px) {
@@ -240,6 +248,10 @@ input[type=radio]:checked + .radio{
     .marks {
         width: 0.25em;
         margin: 0px 8px;
+    }
+
+    #gameOver {
+        font-size: 1.2em;
     }
 }
 
