@@ -367,5 +367,8 @@ input[type=radio]:checked + .radio{
         height: 100%;
     }
     
+    #gameOver {
+        height: 100%;
+    }
     
 }
