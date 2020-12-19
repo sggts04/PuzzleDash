@@ -77,7 +77,7 @@ body {
 
 .marks {
     width: 0.5em;
-    margin: 15px;
+    margin: 0px 15px;
 }
 
 #solvedPuzzles {
@@ -186,4 +186,132 @@ input[type=radio]:checked + .radio{
     font-size: 1.5em;
     font-weight: 400;
     color: white;
+}
+
+@media (max-width: 1220px) {
+    #moveColorDiv {
+        font-size: 2.3em;
+    }
+
+    #colorSquare {
+        width: 1.3em;
+        height: 1.3em;
+    }
+
+    #solvedDiv {
+        font-size: 3.2em;
+    }
+
+    .marks {
+        width: 0.45em;
+        margin: 0px 12px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #moveColorDiv {
+        font-size: 1.8em;
+    }
+
+    #solvedDiv {
+        font-size: 2.6em;
+    }
+
+    .marks {
+        width: 0.35em;
+        margin: 0px 10px;
+    }
+}
+
+@media (max-width: 750px) {
+    #moveColorDiv {
+        font-size: 1.2em;
+    }
+
+    #solvedDiv {
+        font-size: 2em;
+    }
+
+    .marks {
+        width: 0.25em;
+        margin: 0px 8px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo {
+        height: 3em;
+    }
+    
+    .heading {
+        font-size: 3em;
+    }
+
+    .radio {
+        padding: 10px 20px;
+        font-size: 1.4em;
+        margin: 10px 8px;
+    }
+
+    .timeSelector {
+        padding: 5px;
+        margin-bottom: 3em;
+    }
+
+    .pressDownButton {
+        padding: 10px 20px;
+    }
+
+    #but {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 370px) {
+    .logo {
+        height: 2.5em;
+    }
+    
+    .heading {
+        font-size: 2.5em;
+    }
+
+    .radio {
+        padding: 9px 18px;
+        font-size: 1.3em;
+        margin: 10px 5px;
+    }
+
+    .timeSelector {
+        padding: 5px;
+        margin-bottom: 2.5em;
+    }
+
+    .pressDownButton {
+        padding: 9px 18px;
+    }
+
+    #but {
+        font-size: 1.9em;
+    }
+}
+
+@media (max-width: 320px) {
+    .logo {
+        height: 2.4em;
+    }
+    
+    .heading {
+        font-size: 2.4em;
+    }
+
+    .radio {
+        padding: 8px 16px;
+        font-size: 1.1em;
+        margin: 10px 4px;
+    }
+
+    #but {
+        font-size: 1.7em;
+    }
 }
