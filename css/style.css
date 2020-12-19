@@ -62,6 +62,7 @@ body {
     color: #ececec;
     font-size: 3em;
     font-weight: 600;
+    text-align: center;
 }
 
 #timer {
@@ -176,6 +177,7 @@ input[type=radio]:checked + .radio{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .loadingGif {
@@ -188,14 +190,16 @@ input[type=radio]:checked + .radio{
     color: white;
 }
 
+/* Media Tags for general text/margin/padding resizing */
+
 @media (max-width: 1220px) {
     #moveColorDiv {
         font-size: 2.3em;
     }
 
     #colorSquare {
-        width: 1.3em;
-        height: 1.3em;
+        width: 1.2em;
+        height: 1.2em;
     }
 
     #solvedDiv {
@@ -235,6 +239,12 @@ input[type=radio]:checked + .radio{
     .marks {
         width: 0.25em;
         margin: 0px 8px;
+    }
+}
+
+@media (max-width: 615px) {
+    .loadingText {
+        font-size: 1.2em;
     }
 }
 
@@ -278,7 +288,7 @@ input[type=radio]:checked + .radio{
 
     .radio {
         padding: 9px 18px;
-        font-size: 1.3em;
+        font-size: 1.2em;
         margin: 10px 5px;
     }
 
@@ -293,6 +303,10 @@ input[type=radio]:checked + .radio{
 
     #but {
         font-size: 1.9em;
+    }
+
+    .loadingText {
+        font-size: 1.1em;
     }
 }
 
@@ -314,4 +328,31 @@ input[type=radio]:checked + .radio{
     #but {
         font-size: 1.7em;
     }
+
+    .loadingText {
+        font-size: 1em;
+    }
+}
+
+/* Media Tags for making the UI vertical for mobile */
+
+@media (max-width: 800px) {
+    #gameDiv {
+        flex-direction: column;
+    }
+    
+    #myBoard {
+        width: 100vw;
+    }
+    
+    /*
+    #solvedDiv {
+        
+    }
+    
+    #moveColorDiv {
+        
+    }
+    */
+    
 }
