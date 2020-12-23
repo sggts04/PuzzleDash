@@ -68,12 +68,15 @@ function setInfo(puzzles, id, userHistory, correct, wrong) {
 
     // Solved Puzzles
     if (id > 0) {
-        let lichessPuzzleID = puzzles[id - 1].id;
+        let startFEN = puzzles[id - 1].fen;
+        let puzzleGame = new Chess(startFEN);
+        puzzleGame.move(puzzles[id - 1].start);
+        let lichessPuzzleFEN = puzzleGame.fen().replace(/ /g,"%20");
         let elem;
         if (userHistory[id - 1])
-            elem = `<a href="https://lichess.org/training/${lichessPuzzleID}" target="_blank"><img class="marks" src="img/tick.png"></img></a>`;
+            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/tick.png"></img></a>`;
         else
-            elem = `<a href="https://lichess.org/training/${lichessPuzzleID}" target="_blank"><img class="marks" src="img/cross.png"></img></a>`;
+            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/cross.png"></img></a>`;
         $('#solvedPuzzles').append(elem);
     }
 }
