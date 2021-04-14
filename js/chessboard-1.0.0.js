@@ -19,7 +19,7 @@
   var DEFAULT_DRAG_THROTTLE_RATE = 20
   var ELLIPSIS = '…'
   var MINIMUM_JQUERY_VERSION = '1.8.3'
-  var RUN_ASSERTS = false
+  var RUN_ASSERTS = true
   var START_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR'
   var START_POSITION = fenToObj(START_FEN)
 
