@@ -1114,7 +1114,7 @@
       // add the pieces
       for (var i in currentPosition) {
         if (!currentPosition.hasOwnProperty(i)) continue
-
+        if (isDragging && draggedPieceSource == i) continue;
         $('#' + squareElsIds[i]).append(buildPieceHTML(currentPosition[i]))
       }
     }
