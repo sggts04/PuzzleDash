@@ -6,19 +6,25 @@ const endAudio = new Audio('sounds/Error.mp3');
 const gameOverAudio = new Audio('sounds/gameOver.wav');
 const gameFinishAudio = new Audio('sounds/Victory.mp3');
 const lowTimeAudio = new Audio('sounds/LowTime.mp3');
+var socket = io();
 
 function start() {
+    let username = $('input[name="username"]').val();
+    if(!username) {
+        alert("Username can't be empty.");
+        return;
+    }
     let selectedTime = Number($('input[name="timeSelect"]:checked').val());
     $('#startPage').hide();
     $('#loadingPage').css("display", "flex");
+    socket.emit('start', {name: username, selectedTime: selectedTime});
     $.ajax({
-        url: `https://puzzle-dash.herokuapp.com/puzzles/80`,
+        url: `/puzzles/80`,
         complete(resp) {
             $('#loadingPage').hide();
             $('#gameDiv').css("display", "flex");
             const puzzles = resp.responseJSON;
             startAudio.play();
-            var a = 'hi';
             let userHistory = [];
             let id = 0;
             let correct = 0;
