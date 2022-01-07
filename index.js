@@ -1,3 +1,4 @@
+require('dotenv').config();
 const http = require('http');
 const express = require('express');
 const rateLimit = require("express-rate-limit");
@@ -9,7 +10,6 @@ const server = http.createServer(app);
 const router = require('./routes/router.js');
 const setupWs = require('./helpers/ws.js');
 const mongoose = require('mongoose');
-require('dotenv').config();
 
 /*
 // Rate Limiter Setup
