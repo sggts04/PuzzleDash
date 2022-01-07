@@ -1,17 +1,15 @@
 const { Server } = require("socket.io");
 const {
-    filterPuzzles
+    filterPuzzles,
+    getExtendedPuzzleSet,
+    getNumOfPuzzles
 } = require('../helpers/helpers.js');
 
 leaderboard = {}
 state = {}
 
-function handleAbruptGameChange(id) {
-    // todo: update points from old score
-    delete state[id]
-}
-
 function finishGame(socketId) {
+    // check if game already ended
     if(!(socketId in state)) {
         return;
     }
@@ -35,15 +33,17 @@ function setupWs(server) {
         console.log('a user connected');
     
         socket.on('start', (msg) => {
+            // start new game
             console.log(msg);
             if(socket.id in state) {
-                handleAbruptGameChange(socket.id);
+                // socket already in state, delete old state for new game
+                finishGame(socket.id);
             }
             let newGame = {
                 username: msg.username,
                 puzzleStartDateTime: new Date(),
                 puzzleEndDateTime: new Date((new Date()).getTime() + msg.selectedTime * 60000),
-                puzzles: filterPuzzles(80),
+                puzzles: filterPuzzles(getNumOfPuzzles(msg.selectedTime)),
                 curr: 0,
                 score: 0,
                 currentAnsIter: 0
@@ -81,8 +81,12 @@ function setupWs(server) {
             console.log(msg);
             let puzzle = state[socket.id].puzzles[state[socket.id].curr]
             if(puzzle.answer[state[socket.id].currentAnsIter] != msg.move) {
+                // wrong move
                 state[socket.id].currentAnsIter = 0;
                 state[socket.id].curr++;
+                if(state[socket.id].puzzles.length == state[socket.id].curr) {
+                    state[socket.id].puzzles.push(...getExtendedPuzzleSet()) 
+                }
                 let puzzleN = state[socket.id].puzzles[state[socket.id].curr];
                 reply = {
                     correct: false,
@@ -99,14 +103,19 @@ function setupWs(server) {
             } else {
                 state[socket.id].currentAnsIter++;
                 if(state[socket.id].currentAnsIter != puzzle.answer.length) {
+                    // correct move but puzzle hasn't ended
                     let reply = {move: puzzle.answer[state[socket.id].currentAnsIter]}
                     console.log("emit: ", reply);
                     socket.emit("move", reply);
                     state[socket.id].currentAnsIter++;
                 } else {
+                    // correct move and puzzle ended
                     state[socket.id].currentAnsIter = 0;
                     state[socket.id].curr++;
                     state[socket.id].score++;
+                    if(state[socket.id].puzzles.length == state[socket.id].curr) {
+                        state[socket.id].puzzles.push(...getExtendedPuzzleSet()) 
+                    }
                     let puzzleN = state[socket.id].puzzles[state[socket.id].curr];
                     reply = {
                         correct: true,
