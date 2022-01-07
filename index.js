@@ -9,17 +9,20 @@ const server = http.createServer(app);
 const router = require('./routes/router.js');
 const setupWs = require('./helpers/ws.js');
 
+/*
+// Rate Limiter Setup
 const limiter = rateLimit({
-    windowMs: 10 * 60 * 1000, // 10 minutes
-    max: 10, // limit each IP to 10 requests per windowMs
+    windowMs: 5 * 60 * 1000, // 5 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
     message: "You have been rate limited."
 });
+app.use(limiter);
+*/
 
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-//app.use(limiter);
 app.use(cors());
 app.use(express.static('static'));
 

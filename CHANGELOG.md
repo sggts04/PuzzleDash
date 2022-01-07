@@ -1,5 +1,10 @@
 # PuzzleDash Changelog
 
+### 06/01/22
+
+* Convert from client-only game to client-server setup
+* Move all game state and validation to server
+
 ### 15/04/21
 
 * Fix piece duplication bug when picking up piece during opponent's move
