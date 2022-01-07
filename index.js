@@ -8,6 +8,8 @@ const port = process.env.PORT || 3000;
 const server = http.createServer(app);
 const router = require('./routes/router.js');
 const setupWs = require('./helpers/ws.js');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 /*
 // Rate Limiter Setup
@@ -18,6 +20,19 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 */
+
+mongoose.connect(process.env.MONGO, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+let db = mongoose.connection;
+db.once("open", () => {
+    console.log("Connected to MongoDB");
+});
+db.on("error", (err) => {
+    console.log(err);
+});
 
 app.use(bodyParser.urlencoded({
     extended: false

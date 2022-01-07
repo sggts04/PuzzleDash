@@ -4,25 +4,27 @@ const {
     getExtendedPuzzleSet,
     getNumOfPuzzles
 } = require('../helpers/helpers.js');
+const Player = require('../data/model.js')
 
-leaderboard = {}
 state = {}
 
-function finishGame(socketId) {
+async function finishGame(socketId) {
     // check if game already ended
     if(!(socketId in state)) {
         return;
     }
-    let gameState = state[socketId];
-
-    if(!(gameState.username in leaderboard))
-        leaderboard[gameState.username] = 0;
-
-    if(gameState.score > leaderboard[gameState.username])
-        leaderboard[gameState.username] = gameState.score;
-
-    console.log(leaderboard);
+    let gameState = JSON.parse(JSON.stringify(state[socketId]));
     delete state[socketId];
+
+    let result = await Player.findOne({ username: gameState.username, time: gameState.time }).exec();
+
+    if(!result) {
+        await Player.create({ username: gameState.username, time: gameState.time, score: gameState.score });
+    } else {
+        if(gameState.score > result.score) {
+            await Player.updateOne({ username: gameState.username, time: gameState.time }, { score: gameState.score })
+        }
+    }
 }
 
 function setupWs(server) {
@@ -32,15 +34,16 @@ function setupWs(server) {
     io.on('connection', (socket) => {
         console.log('a user connected');
     
-        socket.on('start', (msg) => {
+        socket.on('start', async (msg) => {
             // start new game
             console.log(msg);
             if(socket.id in state) {
                 // socket already in state, delete old state for new game
-                finishGame(socket.id);
+                await finishGame(socket.id);
             }
             let newGame = {
                 username: msg.username,
+                time: msg.selectedTime,
                 puzzleStartDateTime: new Date(),
                 puzzleEndDateTime: new Date((new Date()).getTime() + msg.selectedTime * 60000),
                 puzzles: filterPuzzles(getNumOfPuzzles(msg.selectedTime)),
@@ -62,12 +65,12 @@ function setupWs(server) {
             };
             console.log("emit: ", reply);
             socket.emit("start", reply);
-            setTimeout(() => {
-                finishGame(socket.id);
+            setTimeout(async () => {
+                await finishGame(socket.id);
             }, msg.selectedTime * 60000);
         });
 
-        socket.on('move', (msg) => {
+        socket.on('move', async (msg) => {
             // game has already ended
             if(!(socket.id in state)) {
                 return;
@@ -75,7 +78,7 @@ function setupWs(server) {
             // check if game ended
             let timeDifference = state[socket.id].puzzleEndDateTime.getTime() - new Date().getTime();
             if(timeDifference < 0) {
-                finishGame(socket.id);
+                await finishGame(socket.id);
                 return;
             }
             console.log(msg);
@@ -133,12 +136,20 @@ function setupWs(server) {
             }
         })
 
-        socket.on('end', (msg) => {
+        socket.on('end', async (msg) => {
             // game has already ended
             if(!(socket.id in state)) {
                 return;
             }
-            finishGame(socket.id);
+            await finishGame(socket.id);
+        });
+
+        socket.on('disconnect', async () => {
+            // game has already ended
+            if(!(socket.id in state)) {
+                return;
+            }
+            await finishGame(socket.id);
         });
 
     });

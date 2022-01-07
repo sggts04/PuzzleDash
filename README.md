@@ -25,6 +25,7 @@ Once over, you can also click on any puzzle from your last PuzzleDash, and analy
 * Node.js
 * Express.js
 * Socket.io
+* MongoDB
 
 ### Local Setup
 
@@ -32,6 +33,9 @@ Once over, you can also click on any puzzle from your last PuzzleDash, and analy
 $ git clone https://github.com/sggts04/PuzzleDash
 $ cd PuzzleDash
 $ npm install
+$ echo "MONGO=mongodb+srv://xxx" > .env
 $ npm start
 ```
-and then navigate to `localhost:3000`.
+Replace `mongodb+srv://xxx` with your MongoDB URL.
+
+And then navigate to `localhost:3000`.

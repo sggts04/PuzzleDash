@@ -1,5 +1,9 @@
 # PuzzleDash Changelog
 
+### 07/01/22
+
+* Store leaderboard in MongoDB
+
 ### 06/01/22
 
 * Convert from client-only game to client-server setup
