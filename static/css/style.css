@@ -126,6 +126,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    height: 512px;
     /*395 x 512*/
     margin-top: -256px;
     margin-left: -197.5px;
@@ -137,6 +138,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    height: 512px;
     /*395 x 512*/
     margin-top: -256px;
     margin-left: -197.5px;

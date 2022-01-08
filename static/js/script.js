@@ -130,9 +130,9 @@ function setInfo() {
         let lichessPuzzleFEN = puzzleGame.fen().replace(/ /g,"%20");
         let elem;
         if (userHistory[id - 1].correct)
-            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/tick.png"></img></a>`;
+            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/tick.svg"></img></a>`;
         else
-            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/cross.png"></img></a>`;
+            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/cross.svg"></img></a>`;
         $('#solvedPuzzles').append(elem);
     }
 }
