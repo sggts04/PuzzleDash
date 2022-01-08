@@ -291,7 +291,6 @@ footer a:hover {
 
     .marks {
         width: 0.25em;
-        margin: 0px 8px;
     }
 
     #gameOver {
@@ -413,6 +412,26 @@ footer a:hover {
     
     #gameOver {
         height: 100%;
+    }
+
+    footer {
+        display: none;
+    }
+
+    body {
+        overflow:hidden;
+    }
+
+    #score {
+        margin: 8px 0px -4px 0px;
+    }
+
+    #timer {
+        margin: 10px 0px;
+    }
+
+    #moveColor {
+        margin: 10px 0px;
     }
     
 }
