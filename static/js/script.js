@@ -124,9 +124,9 @@ function setInfo() {
 
     // Solved Puzzles
     if (id > 0) {
-        let startFEN = userHistory[id - 1].fen;
+        let startFEN = userHistory[id - 1].puzzle.fen;
         let puzzleGame = new Chess(startFEN);
-        puzzleGame.move(userHistory[id - 1].start);
+        puzzleGame.move(userHistory[id - 1].puzzle.start);
         let lichessPuzzleFEN = puzzleGame.fen().replace(/ /g,"%20");
         let elem;
         if (userHistory[id - 1].correct)
