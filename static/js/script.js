@@ -125,14 +125,15 @@ function setInfo() {
     // Solved Puzzles
     if (id > 0) {
         let startFEN = userHistory[id - 1].puzzle.fen;
+        let rating = userHistory[id - 1].puzzle.rating;
         let puzzleGame = new Chess(startFEN);
         puzzleGame.move(userHistory[id - 1].puzzle.start);
         let lichessPuzzleFEN = puzzleGame.fen().replace(/ /g,"%20");
         let elem;
         if (userHistory[id - 1].correct)
-            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/tick.svg"></img></a>`;
+            elem = `<a class="solvedPuzzle" href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/tick.svg"></img><p class="solvedRating">${rating}</p></a>`;
         else
-            elem = `<a href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/cross.svg"></img></a>`;
+            elem = `<a class="solvedPuzzle" href="https://lichess.org/analysis/${lichessPuzzleFEN}" target="_blank"><img class="marks" src="img/cross.svg"></img><p class="solvedRating">${rating}</p></a>`;
         $('#solvedPuzzles').append(elem);
     }
 }

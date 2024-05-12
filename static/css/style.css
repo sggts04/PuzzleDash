@@ -90,11 +90,27 @@ body {
     margin: 0px 15px;
 }
 
+.solvedRating {
+    text-decoration: none;
+    color: white;
+    font-size: 0.3em;
+    margin: 0;
+}
+
 #solvedPuzzles {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.solvedPuzzle {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
 }
 
 #but {

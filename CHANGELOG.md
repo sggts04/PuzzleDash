@@ -3,6 +3,7 @@
 ### 12/05/24
 
 * Move to personal AWS Server
+* Show rating for past puzzles
 
 ### 07/01/22
 
