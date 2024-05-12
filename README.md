@@ -4,7 +4,7 @@ Introducing PuzzleDash! A completely free alternative for playing Chess Puzzle R
 
 Once over, you can also click on any puzzle from your last PuzzleDash, and analyze it through Lichess.
 
-**It is live at: [https://puzzledash.herokuapp.com/](https://puzzledash.herokuapp.com/)**
+**It is live at: [https://puzzledash.shreyasgupta.in/](https://puzzledash.shreyasgupta.in/)**
 
 ![PuzzleDash Demo Gif](https://i.imgur.com/z75UmzX.gif)
 

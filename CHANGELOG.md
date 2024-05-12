@@ -1,5 +1,9 @@
 # PuzzleDash Changelog
 
+### 12/05/24
+
+* Move to personal AWS Server
+
 ### 07/01/22
 
 * Store leaderboard in MongoDB
